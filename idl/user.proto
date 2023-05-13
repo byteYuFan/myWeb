@@ -1,0 +1,58 @@
+syntax = "proto3";
+package usersrv;
+option go_package = "myWeb/litex_gen/user/usersrv";
+
+service RegisterService {
+  rpc Register (RegisterRequest) returns (RegisterResponse) {}
+}
+
+message RegisterRequest {
+  string username = 1;
+  string email = 2;
+  string password = 3;
+  string confirm_password = 4;
+}
+
+message RegisterResponse {
+  int32 status_code = 1;
+  string description = 2;
+}
+
+service LoginService {
+  rpc EmailLogin (EmailLoginRequest) returns (EmailLoginResponse) {}
+  rpc SendEmail (SendEmailRequest) returns (SendEmailResponse) {}
+  rpc UsernamePasswordLogin (UsernamePasswordLoginRequest) returns (UsernamePasswordLoginResponse) {}
+}
+
+message EmailLoginRequest {
+  string email = 1;
+  string credential = 2;
+}
+
+message EmailLoginResponse {
+  int32 status_code = 1;
+  string description = 2;
+  string token = 3;
+}
+
+message SendEmailRequest {
+  string email = 1;
+}
+
+message SendEmailResponse {
+  int32 status_code = 1;
+  string description = 2;
+  string credential = 3;
+}
+
+
+message UsernamePasswordLoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message UsernamePasswordLoginResponse {
+  int32 status_code = 1;
+  string description = 2;
+  string token = 3;
+}
