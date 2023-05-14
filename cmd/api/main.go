@@ -3,9 +3,18 @@ package main
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"log"
 	"myWeb/cmd/api/handles"
+	"myWeb/pkg/ttviper"
+	"net"
 	"net/http"
 	"strings"
+)
+
+var (
+	cfg           = ttviper.ConfigInit("config.yml")
+	ServerAddress = cfg.Viper.GetString("Server.Address")
+	ServerPort    = cfg.Viper.GetString("Server.Port")
 )
 
 func main() {
@@ -13,7 +22,13 @@ func main() {
 	router.Use(Cors())
 	user := router.Group("/xaut")
 	user.POST("/user/register/", handles.Register)
-	router.Run(":8000")
+	user.POST("/user/login/", handles.Login)
+	user.POST("/user/login-email/", handles.LoginByEmail)
+	user.POST("/user/send-email/", handles.SendEmail)
+	err := router.Run(net.JoinHostPort(ServerAddress, ServerPort))
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func Cors() gin.HandlerFunc {
@@ -48,4 +63,7 @@ func Cors() gin.HandlerFunc {
 		//处理请求
 		context.Next()
 	}
+}
+func init() {
+
 }

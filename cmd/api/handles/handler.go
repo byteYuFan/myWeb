@@ -18,8 +18,7 @@ type UserRegisterRequestParam struct {
 	Confirm  string `json:"confirm"`  //确认密码
 }
 
-// UserRegisterResponseParam 用户信息 输出参数
-type UserRegisterResponseParam struct {
-	StatusCode  int32  `json:"status_code,omitempty"` // 状态码
-	Description string `json:"description,omitempty"` // 描述信息
+type UserLoginRequestParam struct {
+	UserName string `json:"username"`
+	Password string `json:"password"`
 }
