@@ -34,6 +34,11 @@ func (x *RegisterRequest) FastRead(buf []byte, _type int8, number int32) (offset
 		if err != nil {
 			goto ReadFieldError
 		}
+	case 5:
+		offset, err = x.fastReadField5(buf, _type)
+		if err != nil {
+			goto ReadFieldError
+		}
 	default:
 		offset, err = fastpb.Skip(buf, _type, number)
 		if err != nil {
@@ -64,6 +69,11 @@ func (x *RegisterRequest) fastReadField3(buf []byte, _type int8) (offset int, er
 
 func (x *RegisterRequest) fastReadField4(buf []byte, _type int8) (offset int, err error) {
 	x.ConfirmPassword, offset, err = fastpb.ReadString(buf, _type)
+	return offset, err
+}
+
+func (x *RegisterRequest) fastReadField5(buf []byte, _type int8) (offset int, err error) {
+	x.Code, offset, err = fastpb.ReadString(buf, _type)
 	return offset, err
 }
 
@@ -340,6 +350,7 @@ func (x *RegisterRequest) FastWrite(buf []byte) (offset int) {
 	offset += x.fastWriteField2(buf[offset:])
 	offset += x.fastWriteField3(buf[offset:])
 	offset += x.fastWriteField4(buf[offset:])
+	offset += x.fastWriteField5(buf[offset:])
 	return offset
 }
 
@@ -372,6 +383,14 @@ func (x *RegisterRequest) fastWriteField4(buf []byte) (offset int) {
 		return offset
 	}
 	offset += fastpb.WriteString(buf[offset:], 4, x.GetConfirmPassword())
+	return offset
+}
+
+func (x *RegisterRequest) fastWriteField5(buf []byte) (offset int) {
+	if x.Code == "" {
+		return offset
+	}
+	offset += fastpb.WriteString(buf[offset:], 5, x.GetCode())
 	return offset
 }
 
@@ -576,6 +595,7 @@ func (x *RegisterRequest) Size() (n int) {
 	n += x.sizeField2()
 	n += x.sizeField3()
 	n += x.sizeField4()
+	n += x.sizeField5()
 	return n
 }
 
@@ -608,6 +628,14 @@ func (x *RegisterRequest) sizeField4() (n int) {
 		return n
 	}
 	n += fastpb.SizeString(4, x.GetConfirmPassword())
+	return n
+}
+
+func (x *RegisterRequest) sizeField5() (n int) {
+	if x.Code == "" {
+		return n
+	}
+	n += fastpb.SizeString(5, x.GetCode())
 	return n
 }
 
@@ -809,6 +837,7 @@ var fieldIDToName_RegisterRequest = map[int32]string{
 	2: "Email",
 	3: "Password",
 	4: "ConfirmPassword",
+	5: "Code",
 }
 
 var fieldIDToName_RegisterResponse = map[int32]string{
