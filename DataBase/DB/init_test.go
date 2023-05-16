@@ -5,7 +5,6 @@ import (
 )
 
 func TestInit(t *testing.T) {
-	Init()
 	user := &User{
 		Username: "wyf",
 		Password: "123456",

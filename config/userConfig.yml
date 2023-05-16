@@ -1,4 +1,4 @@
-Server:
+RegisterServer:
   Name: "TiktokUserServer"
   Address: "127.0.0.1"
   Port: 8081
@@ -8,3 +8,9 @@ Server:
     Parallelism: 2
     SaltLength: 16
     keyLength: 32
+LoginServer:
+  Email:
+    SMTP_SERVER: "smtp.qq.com"
+    SMTP_PORT: 587
+    SENDER_EMAIL: "yufanwangwang@qq.com"
+    SENDER_PASSWORD: "srnklldbznjjbdgi"

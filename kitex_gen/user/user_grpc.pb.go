@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.21.9
-// source: user.proto
+// source: userRgister.proto
 
 package user
 
@@ -35,7 +35,7 @@ func NewRegisterServiceClient(cc grpc.ClientConnInterface) RegisterServiceClient
 
 func (c *registerServiceClient) Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error) {
 	out := new(RegisterResponse)
-	err := c.cc.Invoke(ctx, "/user.RegisterService/Register", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/userRgister.RegisterService/Register", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -80,7 +80,7 @@ func _RegisterService_Register_Handler(srv interface{}, ctx context.Context, dec
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.RegisterService/Register",
+		FullMethod: "/userRgister.RegisterService/Register",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RegisterServiceServer).Register(ctx, req.(*RegisterRequest))
@@ -92,7 +92,7 @@ func _RegisterService_Register_Handler(srv interface{}, ctx context.Context, dec
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var RegisterService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "user.RegisterService",
+	ServiceName: "userRgister.RegisterService",
 	HandlerType: (*RegisterServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -101,7 +101,7 @@ var RegisterService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "user.proto",
+	Metadata: "userRgister.proto",
 }
 
 // LoginServiceClient is the client API for LoginService service.
@@ -123,7 +123,7 @@ func NewLoginServiceClient(cc grpc.ClientConnInterface) LoginServiceClient {
 
 func (c *loginServiceClient) EmailLogin(ctx context.Context, in *EmailLoginRequest, opts ...grpc.CallOption) (*EmailLoginResponse, error) {
 	out := new(EmailLoginResponse)
-	err := c.cc.Invoke(ctx, "/user.LoginService/EmailLogin", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/userRgister.LoginService/EmailLogin", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -132,7 +132,7 @@ func (c *loginServiceClient) EmailLogin(ctx context.Context, in *EmailLoginReque
 
 func (c *loginServiceClient) SendEmail(ctx context.Context, in *SendEmailRequest, opts ...grpc.CallOption) (*SendEmailResponse, error) {
 	out := new(SendEmailResponse)
-	err := c.cc.Invoke(ctx, "/user.LoginService/SendEmail", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/userRgister.LoginService/SendEmail", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -141,7 +141,7 @@ func (c *loginServiceClient) SendEmail(ctx context.Context, in *SendEmailRequest
 
 func (c *loginServiceClient) UsernamePasswordLogin(ctx context.Context, in *UsernamePasswordLoginRequest, opts ...grpc.CallOption) (*UsernamePasswordLoginResponse, error) {
 	out := new(UsernamePasswordLoginResponse)
-	err := c.cc.Invoke(ctx, "/user.LoginService/UsernamePasswordLogin", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/userRgister.LoginService/UsernamePasswordLogin", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -194,7 +194,7 @@ func _LoginService_EmailLogin_Handler(srv interface{}, ctx context.Context, dec 
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.LoginService/EmailLogin",
+		FullMethod: "/userRgister.LoginService/EmailLogin",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(LoginServiceServer).EmailLogin(ctx, req.(*EmailLoginRequest))
@@ -212,7 +212,7 @@ func _LoginService_SendEmail_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.LoginService/SendEmail",
+		FullMethod: "/userRgister.LoginService/SendEmail",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(LoginServiceServer).SendEmail(ctx, req.(*SendEmailRequest))
@@ -230,7 +230,7 @@ func _LoginService_UsernamePasswordLogin_Handler(srv interface{}, ctx context.Co
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.LoginService/UsernamePasswordLogin",
+		FullMethod: "/userRgister.LoginService/UsernamePasswordLogin",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(LoginServiceServer).UsernamePasswordLogin(ctx, req.(*UsernamePasswordLoginRequest))
@@ -242,7 +242,7 @@ func _LoginService_UsernamePasswordLogin_Handler(srv interface{}, ctx context.Co
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var LoginService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "user.LoginService",
+	ServiceName: "userRgister.LoginService",
 	HandlerType: (*LoginServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -259,5 +259,5 @@ var LoginService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "user.proto",
+	Metadata: "userRgister.proto",
 }

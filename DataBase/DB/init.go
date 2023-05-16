@@ -6,7 +6,7 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"log"
-	"myWeb/config"
+	"myWeb/pkg/ttviper"
 )
 
 func failOnError(err error, msg string) {
@@ -16,10 +16,19 @@ func failOnError(err error, msg string) {
 }
 
 var USERDB *gorm.DB
+var (
+	config        = ttviper.ConfigInit("config.yml")
+	MysqlHost     = config.Viper.GetString("MySQL.Address")
+	MysqlPort     = config.Viper.GetInt("MySQL.Port")
+	MysqlUsername = config.Viper.GetString("MySQL.Username")
+	MysqlPassword = config.Viper.GetString("MySQL.Password")
+	MysqlDatabase = config.Viper.GetString("MySQL.Database")
+)
 
-func Init() {
+func init() {
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8&parseTime=True&loc=Local",
-		config.MYSQL_USERNAME, config.MYSQL_PASSWORD, config.MYSQL_HOST, config.MYSQL_PORT, config.MYSQL_DATABASE)
+		MysqlUsername, MysqlPassword, MysqlHost, MysqlPort, MysqlDatabase,
+	)
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
 		Logger: logger.Default.LogMode(logger.Info),
 	})
@@ -30,6 +39,6 @@ func Init() {
 	failOnError(err, "failed to ping mysql")
 	USERDB = db
 }
-func init() {
-	Init()
+func Init() {
+
 }

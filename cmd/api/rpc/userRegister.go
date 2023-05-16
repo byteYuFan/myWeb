@@ -2,6 +2,7 @@ package rpc
 
 import (
 	"context"
+	"fmt"
 	"github.com/cloudwego/kitex/client"
 	"github.com/cloudwego/kitex/pkg/connpool"
 	"myWeb/kitex_gen/user/usersrv"
@@ -17,6 +18,7 @@ func init() {
 }
 
 func Register(ctx context.Context, req *usersrv.RegisterRequest) (resp *usersrv.RegisterResponse, err error) {
+	fmt.Println("@@@@@@@@@@@@@@@@", req.Code)
 	resp, err = userRegisterClient.Register(ctx, req)
 	if err != nil {
 		return nil, err

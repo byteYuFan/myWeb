@@ -27,7 +27,7 @@ var (
 	ErrHttpInvalidValue          = NewHttpErr(code.ErrInvalidValue, 500, "Invalid value")
 	ErrHttpInvalidValueOfLength  = NewHttpErr(code.ErrInvalidValueOfLength, 500, "Invalid values do not match length")
 	ErrHttpPreloadNotAllowed     = NewHttpErr(code.ErrPreloadNotAllowed, 500, "Preload is not allowed when count is used")
-	ErrHttpEncrypt               = NewHttpErr(code.ErrEncrypt, 401, "Error occurred while encrypting the user password")
+	ErrHttpEncrypt               = NewHttpErr(code.ErrEncrypt, 401, "Error occurred while encrypting the userRgister password")
 	ErrHttpSignatureInvalid      = NewHttpErr(code.ErrSignatureInvalid, 401, "Signature is invalid")
 	ErrHttpExpired               = NewHttpErr(code.ErrExpired, 401, "Token expired")
 	ErrHttpInvalidAuthHeader     = NewHttpErr(code.ErrInvalidAuthHeader, 401, "Invalid authorization header")
@@ -79,7 +79,7 @@ var (
 	ErrInvalidValueOfLength  = NewErrNo(code.ErrInvalidValueOfLength, "Invalid values do not match length")
 	ErrPreloadNotAllowed     = NewErrNo(code.ErrPreloadNotAllowed, "Preload is not allowed when count is used")
 
-	ErrEncrypt           = NewErrNo(code.ErrEncrypt, "Error occurred while encrypting the user password")
+	ErrEncrypt           = NewErrNo(code.ErrEncrypt, "Error occurred while encrypting the userRgister password")
 	ErrSignatureInvalid  = NewErrNo(code.ErrSignatureInvalid, "Signature is invalid")
 	ErrExpired           = NewErrNo(code.ErrExpired, "Token expired")
 	ErrInvalidAuthHeader = NewErrNo(code.ErrInvalidAuthHeader, "Invalid authorization header")

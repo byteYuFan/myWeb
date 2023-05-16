@@ -1,0 +1,14 @@
+Server:
+  Name: "XAUT-SERVER"
+  Address: "127.0.0.1"
+  Port: 8080
+MySQL:
+  Address: "docker"
+  Port: 3309
+  Database: "xaut"
+  Username: "pogf"
+  Password: "123456"
+Redis:
+  Address: "docker"
+  Port: 6379
+  

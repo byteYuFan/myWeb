@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 	"myWeb/DataBase/pack"
-	"myWeb/cmd/user/command"
+	"myWeb/cmd/userRgister/command"
 	"myWeb/kitex_gen/user/usersrv"
 	"myWeb/pkg/checkout"
 	"myWeb/pkg/errno"
@@ -39,9 +39,7 @@ func (s *MyRegisterServiceServer) Register(ctx context.Context, req *usersrv.Reg
 		return resp, nil
 	}
 	resp = pack.BuildUserRegisterResponse(errno.Success)
-	resp.StatusCode = 0
+	resp.StatusCode = 10000
 	resp.Description = "register successfully."
 	return resp, nil
 }
-
-func (s *MyRegisterServiceServer) MustEmbedUnimplementedRegisterServiceServer() {}

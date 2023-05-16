@@ -14,8 +14,10 @@ func SendResponse(c *gin.Context, response interface{}) {
 type UserRegisterRequestParam struct {
 	UserName string `json:"username"` // 用户名
 	Email    string `json:"email"`    //用户邮箱
+	Code     string `json:"code"`     //用户注册邮箱验证码
 	Password string `json:"password"` // 用户密码
 	Confirm  string `json:"confirm"`  //确认密码
+
 }
 
 type UserLoginRequestParam struct {

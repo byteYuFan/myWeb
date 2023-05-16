@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/cloudwego/kitex/server"
-	"myWeb/cmd/user/command"
+	"myWeb/cmd/userRgister/command"
 	"myWeb/kitex_gen/user/usersrv/registerservice"
 	"myWeb/pkg/ttviper"
 	"net"

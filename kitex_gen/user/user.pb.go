@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.28.1
 // 	protoc        v3.21.9
-// source: user.proto
+// source: userRgister.proto
 
 package user
 
@@ -584,24 +584,24 @@ func file_user_proto_rawDescGZIP() []byte {
 
 var file_user_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_user_proto_goTypes = []interface{}{
-	(*RegisterRequest)(nil),               // 0: user.RegisterRequest
-	(*RegisterResponse)(nil),              // 1: user.RegisterResponse
-	(*EmailLoginRequest)(nil),             // 2: user.EmailLoginRequest
-	(*EmailLoginResponse)(nil),            // 3: user.EmailLoginResponse
-	(*SendEmailRequest)(nil),              // 4: user.SendEmailRequest
-	(*SendEmailResponse)(nil),             // 5: user.SendEmailResponse
-	(*UsernamePasswordLoginRequest)(nil),  // 6: user.UsernamePasswordLoginRequest
-	(*UsernamePasswordLoginResponse)(nil), // 7: user.UsernamePasswordLoginResponse
+	(*RegisterRequest)(nil),               // 0: userRgister.RegisterRequest
+	(*RegisterResponse)(nil),              // 1: userRgister.RegisterResponse
+	(*EmailLoginRequest)(nil),             // 2: userRgister.EmailLoginRequest
+	(*EmailLoginResponse)(nil),            // 3: userRgister.EmailLoginResponse
+	(*SendEmailRequest)(nil),              // 4: userRgister.SendEmailRequest
+	(*SendEmailResponse)(nil),             // 5: userRgister.SendEmailResponse
+	(*UsernamePasswordLoginRequest)(nil),  // 6: userRgister.UsernamePasswordLoginRequest
+	(*UsernamePasswordLoginResponse)(nil), // 7: userRgister.UsernamePasswordLoginResponse
 }
 var file_user_proto_depIdxs = []int32{
-	0, // 0: user.RegisterService.Register:input_type -> user.RegisterRequest
-	2, // 1: user.LoginService.EmailLogin:input_type -> user.EmailLoginRequest
-	4, // 2: user.LoginService.SendEmail:input_type -> user.SendEmailRequest
-	6, // 3: user.LoginService.UsernamePasswordLogin:input_type -> user.UsernamePasswordLoginRequest
-	1, // 4: user.RegisterService.Register:output_type -> user.RegisterResponse
-	3, // 5: user.LoginService.EmailLogin:output_type -> user.EmailLoginResponse
-	5, // 6: user.LoginService.SendEmail:output_type -> user.SendEmailResponse
-	7, // 7: user.LoginService.UsernamePasswordLogin:output_type -> user.UsernamePasswordLoginResponse
+	0, // 0: userRgister.RegisterService.Register:input_type -> userRgister.RegisterRequest
+	2, // 1: userRgister.LoginService.EmailLogin:input_type -> userRgister.EmailLoginRequest
+	4, // 2: userRgister.LoginService.SendEmail:input_type -> userRgister.SendEmailRequest
+	6, // 3: userRgister.LoginService.UsernamePasswordLogin:input_type -> userRgister.UsernamePasswordLoginRequest
+	1, // 4: userRgister.RegisterService.Register:output_type -> userRgister.RegisterResponse
+	3, // 5: userRgister.LoginService.EmailLogin:output_type -> userRgister.EmailLoginResponse
+	5, // 6: userRgister.LoginService.SendEmail:output_type -> userRgister.SendEmailResponse
+	7, // 7: userRgister.LoginService.UsernamePasswordLogin:output_type -> userRgister.UsernamePasswordLoginResponse
 	4, // [4:8] is the sub-list for method output_type
 	0, // [0:4] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

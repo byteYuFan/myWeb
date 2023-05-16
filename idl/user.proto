@@ -1,6 +1,6 @@
 syntax = "proto3";
 package usersrv;
-option go_package = "myWeb/litex_gen/user/usersrv";
+option go_package = "myWeb/kitex_gen/userRgister/usersrv";
 
 service RegisterService {
   rpc Register (RegisterRequest) returns (RegisterResponse) {}

@@ -2,6 +2,7 @@ package handles
 
 import (
 	"context"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
 	"myWeb/DataBase/pack"
@@ -17,11 +18,13 @@ func Register(ctx *gin.Context) {
 		SendResponse(ctx, pack.BuildUserRegisterResponse(errno.ErrBind))
 		return
 	}
+	fmt.Println("************", registerVar)
 	resp, err := rpc.Register(context.Background(), &usersrv.RegisterRequest{
 		Username:        registerVar.UserName,
 		Email:           registerVar.Email,
 		Password:        registerVar.Password,
 		ConfirmPassword: registerVar.Confirm,
+		Code:            registerVar.Code,
 	})
 	if err != nil {
 		SendResponse(ctx, pack.BuildUserRegisterResponse(err))

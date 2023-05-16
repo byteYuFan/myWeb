@@ -10,6 +10,7 @@ import (
 	db "myWeb/DataBase/DB"
 	"myWeb/kitex_gen/user/usersrv"
 	"myWeb/pkg/errno"
+	redisMiddleware "myWeb/pkg/redis"
 )
 
 type CreateUserService struct {
@@ -45,6 +46,14 @@ func (c *CreateUserService) CreateUser(req *usersrv.RegisterRequest, argon2Param
 	user.Username = req.Username
 	user.Password = password
 	user.Email = req.Email
+	fmt.Println("**************", req.Code)
+	codeV, err := redisMiddleware.GetEmailCode("email", user.Email)
+	if err != nil {
+		return err
+	}
+	if req.Code != codeV {
+		return errno.NewErrNo(100601, "验证码错误")
+	}
 	return db.CreateUser(c.ctx, user)
 }
 

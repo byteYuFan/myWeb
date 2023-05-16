@@ -70,3 +70,10 @@ func QueryUserByName(ctx context.Context, username string) (*User, error) {
 	}
 	return res, nil
 }
+func QueryUserByEmail(ctx context.Context, email string) (*User, error) {
+	res := new(User)
+	if err := USERDB.WithContext(ctx).Where("email = ?", email).Find(&res).Error; err != nil {
+		return nil, err
+	}
+	return res, nil
+}

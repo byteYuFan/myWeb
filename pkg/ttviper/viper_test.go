@@ -5,7 +5,9 @@ import (
 )
 
 func TestConfigInit(t *testing.T) {
-
-	ConfigInit("userConfig.yml")
+	cfg := ConfigInit("Config.yml")
+	cfg.Viper.ReadInConfig()
+	t.Log(cfg.Viper.GetString("Server.Name"))
+	t.Log(cfg.Viper.GetString("MySQL.Address"))
 
 }

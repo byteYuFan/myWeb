@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.28.1
 // 	protoc        v3.21.9
-// source: idl/user.proto
+// source: idl/userRgister.proto
 
 package usersrv
 
@@ -30,6 +30,7 @@ type RegisterRequest struct {
 	Email           string `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
 	Password        string `protobuf:"bytes,3,opt,name=password,proto3" json:"password,omitempty"`
 	ConfirmPassword string `protobuf:"bytes,4,opt,name=confirm_password,json=confirmPassword,proto3" json:"confirm_password,omitempty"`
+	Code string `protobuf:"bytes,5,opt,name=code,json=code,proto3" json:"code,omitempty"`
 }
 
 func (x *RegisterRequest) Reset() {
