@@ -38,7 +38,7 @@ func LoginByEmail(ctx context.Context, req *usersrv.EmailLoginRequest) (resp *us
 		return nil, err
 	}
 	if resp.StatusCode != 10000 {
-		return nil, errno.NewErrNo(int(resp.StatusCode), resp.Description)
+		return nil, err
 	}
 	return resp, nil
 }

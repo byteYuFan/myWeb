@@ -9,7 +9,7 @@ func TestInsert(t *testing.T) {
 	Insert()
 }
 func TestStoreCode(t *testing.T) {
-	err := StoreCode("email", "854978151@qq.com", "12873", time.Minute)
+	err := StoreCode("email", "1523768711@qq.com", "128673", 128*time.Minute)
 	if err != nil {
 		t.Fatal(err)
 	}

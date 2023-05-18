@@ -1,0 +1,4 @@
+VideoService:
+  Addr: "127.0.0.1"
+  Port: 8084
+  ServerName: "video-server"

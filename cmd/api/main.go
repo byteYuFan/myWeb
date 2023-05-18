@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
+	"myWeb/cmd/api/auth"
 	"myWeb/cmd/api/handles"
 	"myWeb/pkg/ttviper"
 	"net"
@@ -25,12 +26,14 @@ func main() {
 	user.POST("/user/login/", handles.Login)
 	user.POST("/user/login-email/", handles.LoginByEmail)
 	user.POST("/user/send-email/", handles.SendEmail)
+	user.POST("/user/login/forget-password/", handles.RestPassword)
+	user.POST("/user/modify-info/", auth.TokenAuthMiddleware(), handles.UpdateUserInfo)
+	user.POST("/user/modify-password/", auth.TokenAuthMiddleware(), handles.ChangeUserPassword)
 	err := router.Run(net.JoinHostPort(ServerAddress, ServerPort))
 	if err != nil {
 		log.Fatal(err)
 	}
 }
-
 func Cors() gin.HandlerFunc {
 	return func(context *gin.Context) {
 		method := context.Request.Method
@@ -65,5 +68,4 @@ func Cors() gin.HandlerFunc {
 	}
 }
 func init() {
-
 }

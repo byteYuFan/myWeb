@@ -1,0 +1,71 @@
+syntax = "proto3";
+package userInfo;
+option go_package = "myWeb/kitex_gen/userInfo";
+
+//定义用户信息结构
+message User {
+  int64 id = 1;         // 用户ID
+  string name = 2;       // 用户名
+  string password = 3;   // 密码
+  int32 age = 4;         // 年龄
+  string profession = 5; // 职业
+  string department = 6; // 院系
+  string province = 7;   // 省份
+  string city = 8;       // 城市
+  bool flag = 9; //标识待用
+}
+
+message UpdateUserRequest {
+  int64 id = 1;         // 用户ID
+  string name = 2;       // 用户名
+  string password = 3;   // 密码
+  int32 age = 4;         // 年龄
+  string profession = 5; // 职业
+  string department = 6; // 院系
+  string province = 7;   // 省份
+  string city = 8;       // 城市
+  bool flag = 9;    // 是否单身
+}
+
+message UpdateUserResponse {
+  int32 status_code = 1;      // 更新是否成功
+  string description = 2;   // 更新结果消息
+}
+
+message ChangePasswordRequest {
+  int64 id = 1;         // 用户ID
+  string old_password = 2; // 旧密码
+  string new_password = 3; // 新密码
+  string confirm_new_password = 4; // 新密码
+}
+
+message ChangePasswordResponse {
+  int32 status_code = 1;      // 修改密码是否成功
+  string description = 2;    // 修改密码结果消息
+}
+
+message ResetPasswordRequest{
+  string email = 1;
+  string credential = 2;
+}
+
+message ResetPasswordResponse{
+  int32 status_code = 1;
+  string description = 2;
+}
+message GetUserRequest {
+  int64 id = 1;         // 用户ID
+}
+
+message GetUserResponse {
+  int32 status_code = 1;
+  string description = 2;
+  User user = 3;
+}
+
+service UserService {
+  rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
+  rpc ChangePassword(ChangePasswordRequest) returns (ChangePasswordResponse);
+  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+  rpc RestPassword(ResetPasswordRequest)returns (ResetPasswordResponse);
+}

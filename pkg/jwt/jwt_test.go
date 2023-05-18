@@ -13,7 +13,7 @@ func TestGenerateToken(t *testing.T) {
 }
 
 func TestParseToken(t *testing.T) {
-	c, err := ParseToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ3eWYiLCJleHAiOjE2ODM4NzU4NjcsImlhdCI6MTY4Mzc4OTQ2NywiaXNzIjoicG9nZiJ9.rXzf1fzidsfwe4HRBt7JN_NxAxUceD0HxdpCQsbPuFc")
+	c, err := ParseToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsInVzZXJuYW1lIjoid3d5eWZmMTIzIiwiZXhwIjoxNjg0NDEyMTk5LCJpYXQiOjE2ODQzMjU3OTksImlzcyI6InBvZ2YifQ.fFdeGn5ltyW2R18SAAUSfRRn_aOHkm-nQpVPLLBRBao")
 	if err != nil {
 		t.Fatal(err)
 	}

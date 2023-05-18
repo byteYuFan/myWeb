@@ -46,7 +46,6 @@ func (c *CreateUserService) CreateUser(req *usersrv.RegisterRequest, argon2Param
 	user.Username = req.Username
 	user.Password = password
 	user.Email = req.Email
-	fmt.Println("**************", req.Code)
 	codeV, err := redisMiddleware.GetEmailCode("email", user.Email)
 	if err != nil {
 		return err

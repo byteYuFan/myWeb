@@ -157,7 +157,6 @@ func (s *SendEmailService) Send(to string) (string, error) {
 	emailCfg.SmtpPort = cfg.Viper.GetString("LoginServer.Email.SMTP_PORT")
 	emailCfg.SenderEmail = cfg.Viper.GetString("LoginServer.Email.SENDER_EMAIL")
 	emailCfg.SenderPassword = cfg.Viper.GetString("LoginServer.Email.SENDER_PASSWORD")
-	fmt.Println("--------", emailCfg)
 	return sendCode(to, emailCfg)
 }
 func sendCode(to string, config EmailConfig) (string, error) {
@@ -183,7 +182,9 @@ func sendCode(to string, config EmailConfig) (string, error) {
 
 // 生成 6 位数的验证码
 func generateCode() string {
-	return strconv.Itoa(int(time.Now().UnixNano() / 1000000 % 1000000))
+	code := strconv.Itoa(int(time.Now().UnixNano() / 1000000 % 1000000))
+	code = fmt.Sprintf("%06s", code)
+	return code
 }
 
 // 发送邮件

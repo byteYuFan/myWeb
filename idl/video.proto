@@ -1,0 +1,55 @@
+syntax = "proto3";
+package video;
+option go_package = "myWeb/kitex_gen/video";
+
+message Video {
+  int32 id = 1;
+  string name = 2;
+  string url = 3;
+  int32 duration = 4;
+}
+
+
+message Tag {
+  int32 tag_id = 1;
+  string tag_name = 2;
+  string tag_description = 3;
+}
+
+
+message UploadVideoRequest {
+  int32 user_id = 1;
+  Video video = 2;
+  repeated Tag tags = 3;
+}
+
+message UploadVideoResponse {
+  int32 status_code = 1;
+  string description = 2;
+}
+
+message GetVideoInfoRequest {
+  int32 user_id = 1;
+}
+
+message GetVideoInfoResponse {
+  int32 status_code = 1;
+  string description = 2;
+  repeated Video videos = 3;
+}
+
+message DeleteVideoRequest {
+  int32 user_id = 1;
+  int32 video_id = 2;
+}
+
+message DeleteVideoResponse {
+  int32 status_code = 1;
+  string description = 2;
+}
+
+service VideoService {
+  rpc UploadVideo(UploadVideoRequest) returns (UploadVideoResponse);
+  rpc GetVideoInfo(GetVideoInfoRequest) returns (GetVideoInfoResponse);
+  rpc DeleteVideo(DeleteVideoRequest) returns (DeleteVideoResponse);
+}
