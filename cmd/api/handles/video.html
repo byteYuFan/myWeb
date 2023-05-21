@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>上传视频</title>
+  <meta charset="utf-8">
 </head>
 <body>
-$END$
+<form action="http://127.0.0.1:8080/xaut/video/upload-video/" method="POST" enctype="multipart/form-data">
+  <input type="file" name="video">
+  <button type="submit">上传视频</button>
+</form>
+<img src="https://pogf.oss-cn-beijing.aliyuncs.com/video/b.png">
 </body>
 </html>

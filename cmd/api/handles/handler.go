@@ -24,3 +24,9 @@ type UserLoginRequestParam struct {
 	UserName string `json:"username"`
 	Password string `json:"password"`
 }
+
+// VideoUploadRequestParam 上传视频请求参数
+type VideoUploadRequestParam struct {
+	Name     string `json:"name"`
+	Duration int32  `json:"duration"`
+}

@@ -1,13 +1,13 @@
 package main
 
 import (
+	"crypto/tls"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
 	"myWeb/cmd/api/auth"
 	"myWeb/cmd/api/handles"
 	"myWeb/pkg/ttviper"
-	"net"
 	"net/http"
 	"strings"
 )
@@ -16,6 +16,8 @@ var (
 	cfg           = ttviper.ConfigInit("config.yml")
 	ServerAddress = cfg.Viper.GetString("Server.Address")
 	ServerPort    = cfg.Viper.GetString("Server.Port")
+	certFile      = cfg.Viper.GetString("Server.CertFile")
+	keyFile       = cfg.Viper.GetString("Server.KeyFile")
 )
 
 func main() {
@@ -29,10 +31,29 @@ func main() {
 	user.POST("/user/login/forget-password/", handles.RestPassword)
 	user.POST("/user/modify-info/", auth.TokenAuthMiddleware(), handles.UpdateUserInfo)
 	user.POST("/user/modify-password/", auth.TokenAuthMiddleware(), handles.ChangeUserPassword)
-	err := router.Run(net.JoinHostPort(ServerAddress, ServerPort))
+	video := router.Group("/video")
+	video.POST("/upload-video/", auth.TokenAuthMiddleware(), handles.UploadVideo)
+	video.GET("/get-video-info/", auth.TokenAuthMiddleware(), handles.GetVideoInfo)
+	// 设置证书和私钥文件的路径
+
+	// 加载证书和私钥文件
+	cert, err := tls.LoadX509KeyPair(certFile, keyFile)
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	server := &http.Server{
+		Addr:    ServerAddress + ":" + ServerPort,
+		Handler: router,
+		TLSConfig: &tls.Config{
+			Certificates: []tls.Certificate{cert},
+		},
+	}
+	err = server.ListenAndServeTLS("", "")
+	if err != nil {
+		panic(err)
+	}
+	log.Println("service start successfully.")
 }
 func Cors() gin.HandlerFunc {
 	return func(context *gin.Context) {
